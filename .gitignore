@@ -3,3 +3,16 @@ __pycache__/
 *.pyc
 db.sqlite3
 .pytest_cache/
+
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/tmp/
+frontend/out-tsc/
+frontend/coverage/
+
+.idea/
+.vscode/
+
+.DS_Store
+Thumbs.db
