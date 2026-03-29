@@ -5,7 +5,7 @@ import { Message } from 'primeng/message';
   selector: 'app-result-display',
   imports: [Message],
   templateUrl: './result-display.html',
-  styleUrl: './result-display.css'
+  styleUrl: './result-display.css',
 })
 export class ResultDisplay {
   result = input<string>('');

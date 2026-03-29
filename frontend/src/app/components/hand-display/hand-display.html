@@ -1,15 +1,17 @@
 <div class="hand-display">
-<h3>Your Hand ({{ cards().length }}/5)</h3>
+  <h3>Your Hand ({{ cards().length }}/5)</h3>
 
-<div class="cards">
+  <div class="cards">
     @for (card of cards(); track $index) {
     <div class="card" [class.red]="isRed(card.suit)">
-        <span class="card-rank">{{ card.rank }}</span>
-        <span class="card-suit">{{ suitSymbol(card.suit) }}</span>
-        @if (mode() === 'pick') {
-        <button class="card-remove" (click)="removeCard.emit($index)">✕</button>
-        }
+      <span class="card-rank">{{ card.rank }}</span>
+      <span class="card-suit">{{ suitSymbol(card.suit) }}</span>
+      @if (mode() === 'pick') {
+      <button class="card-remove" (click)="removeCard.emit($index)">✕</button>
+      }
     </div>
+    } @if (cards().length === 0) {
+    <div class="empty-hand">No cards selected</div>
     }
-</div>
+  </div>
 </div>

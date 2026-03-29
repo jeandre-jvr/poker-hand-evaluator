@@ -1,9 +1,8 @@
 @if (result()) {
 <div class="result-display">
-    <h2>{{ result() }}</h2>
+  <span class="result-label">Best Hand</span>
+  <h2>{{ result() }}</h2>
 </div>
-}
-
-@if (error()) {
+} @if (error()) {
 <p-message severity="error" [text]="error()" />
 }

@@ -9,7 +9,7 @@ import { ResultDisplay } from '../../components/result-display/result-display';
   selector: 'app-hand-evaluator',
   imports: [Button, CardPicker, HandDisplay, ResultDisplay],
   templateUrl: './hand-evaluator.html',
-  styleUrl: './hand-evaluator.css'
+  styleUrl: './hand-evaluator.css',
 })
 export class HandEvaluator implements OnInit {
   mode = signal<'pick' | 'random'>('pick');
@@ -28,7 +28,7 @@ export class HandEvaluator implements OnInit {
   ngOnInit() {
     this.pokerService.getCards().subscribe({
       next: (options) => this.cardOptions.set(options),
-      error: (err) => this.pickerError.set(err)
+      error: (err) => this.pickerError.set(err),
     });
   }
 
@@ -42,19 +42,23 @@ export class HandEvaluator implements OnInit {
 
   addCard(card: Card) {
     if (this.handFull()) return;
-    const duplicate = this.hand().some(c => c.rank === card.rank && c.suit === card.suit);
+    const duplicate = this.hand().some(
+      (c) => c.rank === card.rank && c.suit === card.suit,
+    );
     if (duplicate) {
-      this.pickerError.set(`${card.rank} of ${card.suit} is already in your hand.`);
+      this.pickerError.set(
+        `${card.rank} of ${card.suit} is already in your hand.`,
+      );
       return;
     }
-    this.hand.update(h => [...h, card]);
+    this.hand.update((h) => [...h, card]);
     this.pickerError.set('');
     this.result.set('');
     this.resultError.set('');
   }
 
   removeCard(index: number) {
-    this.hand.update(h => h.filter((_, i) => i !== index));
+    this.hand.update((h) => h.filter((_, i) => i !== index));
     this.result.set('');
     this.resultError.set('');
   }
@@ -67,7 +71,7 @@ export class HandEvaluator implements OnInit {
         this.result.set('');
         this.resultError.set('');
       },
-      error: (err) => this.pickerError.set(err)
+      error: (err) => this.pickerError.set(err),
     });
   }
 
@@ -83,7 +87,7 @@ export class HandEvaluator implements OnInit {
       error: (err) => {
         this.resultError.set(err);
         this.isEvaluating.set(false);
-      }
+      },
     });
   }
 }

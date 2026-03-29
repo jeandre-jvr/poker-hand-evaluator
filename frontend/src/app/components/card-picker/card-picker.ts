@@ -10,7 +10,7 @@ import { Card, CardOptions } from '../../services/poker.service';
   selector: 'app-card-picker',
   imports: [FormsModule, Select, SelectButton, Button, Message],
   templateUrl: './card-picker.html',
-  styleUrl: './card-picker.css'
+  styleUrl: './card-picker.css',
 })
 export class CardPicker {
   cardOptions = input.required<CardOptions>();
@@ -27,7 +27,7 @@ export class CardPicker {
 
   modeOptions = [
     { label: 'Pick Cards', value: 'pick' },
-    { label: 'Random Hand', value: 'random' }
+    { label: 'Random Hand', value: 'random' },
   ];
 
   canAdd = computed(() => {

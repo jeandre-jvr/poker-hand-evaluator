@@ -1,37 +1,36 @@
 <div class="card-picker">
-<p-selectbutton
+  <p-selectbutton
     [options]="modeOptions"
     [ngModel]="mode()"
     (ngModelChange)="onModeChange($event)"
     optionLabel="label"
     optionValue="value"
-/>
+    styleClass="mode-toggle"
+  />
 
-@if (mode() === 'pick') {
-    <div class="pick-controls">
+  @if (mode() === 'pick') {
+  <div class="pick-controls">
     <p-select
-        [options]="cardOptions().ranks"
-        [ngModel]="selectedRank()"
-        (ngModelChange)="selectedRank.set($event)"
-        placeholder="Rank"
+      [options]="cardOptions().ranks"
+      [ngModel]="selectedRank()"
+      (ngModelChange)="selectedRank.set($event)"
+      placeholder="Rank"
+      [disabled]="handFull()"
     />
     <p-select
-        [options]="cardOptions().suits"
-        [ngModel]="selectedSuit()"
-        (ngModelChange)="selectedSuit.set($event)"
-        placeholder="Suit"
+      [options]="cardOptions().suits"
+      [ngModel]="selectedSuit()"
+      (ngModelChange)="selectedSuit.set($event)"
+      placeholder="Suit"
+      [disabled]="handFull()"
     />
     <p-button label="Add Card" [disabled]="!canAdd()" (onClick)="onAddCard()" />
-    </div>
-}
-
-@if (mode() === 'random') {
-    <div class="random-controls">
-    <p-button label="Deal" (onClick)="onDeal()" />
-    </div>
-}
-
-@if (error()) {
-    <p-message severity="error" [text]="error()" />
-}
+  </div>
+  } @if (mode() === 'random') {
+  <div class="random-controls">
+    <p-button label="Deal 5 Cards" (onClick)="onDeal()" />
+  </div>
+  } @if (error()) {
+  <p-message severity="error" [text]="error()" />
+  }
 </div>
