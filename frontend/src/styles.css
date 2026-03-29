@@ -72,11 +72,11 @@ body {
 }
 
 .card-picker .p-selectbutton .p-button {
-    flex: 1;
-    justify-content: center;
-    white-space: nowrap;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 1rem 2rem;
+  font-size: 1rem;
 }
 
 .pick-controls {
