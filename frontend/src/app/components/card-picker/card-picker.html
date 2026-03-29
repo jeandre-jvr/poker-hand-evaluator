@@ -1,0 +1,37 @@
+<div class="card-picker">
+<p-selectbutton
+    [options]="modeOptions"
+    [ngModel]="mode()"
+    (ngModelChange)="onModeChange($event)"
+    optionLabel="label"
+    optionValue="value"
+/>
+
+@if (mode() === 'pick') {
+    <div class="pick-controls">
+    <p-select
+        [options]="cardOptions().ranks"
+        [ngModel]="selectedRank()"
+        (ngModelChange)="selectedRank.set($event)"
+        placeholder="Rank"
+    />
+    <p-select
+        [options]="cardOptions().suits"
+        [ngModel]="selectedSuit()"
+        (ngModelChange)="selectedSuit.set($event)"
+        placeholder="Suit"
+    />
+    <p-button label="Add Card" [disabled]="!canAdd()" (onClick)="onAddCard()" />
+    </div>
+}
+
+@if (mode() === 'random') {
+    <div class="random-controls">
+    <p-button label="Deal" (onClick)="onDeal()" />
+    </div>
+}
+
+@if (error()) {
+    <p-message severity="error" [text]="error()" />
+}
+</div>

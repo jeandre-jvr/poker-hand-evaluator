@@ -1,0 +1,32 @@
+<div class="hand-evaluator">
+<app-card-picker
+    [cardOptions]="cardOptions()"
+    [mode]="mode()"
+    [handFull]="handFull()"
+    [error]="pickerError()"
+    (modeChange)="switchMode($event)"
+    (addCard)="addCard($event)"
+    (dealHand)="dealHand()"
+/>
+
+<app-hand-display
+    [cards]="hand()"
+    [mode]="mode()"
+    (removeCard)="removeCard($event)"
+/>
+
+@if (handFull()) {
+    <div class="evaluate-section">
+    <p-button
+        label="Evaluate Hand"
+        [loading]="isEvaluating()"
+        (onClick)="evaluateHand()"
+    />
+    </div>
+}
+
+<app-result-display
+    [result]="result()"
+    [error]="resultError()"
+/>
+</div>
