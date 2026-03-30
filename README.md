@@ -13,8 +13,8 @@ A browser-based poker hand evaluator. Submit 5 cards and get the highest ranking
 
 ## Prerequisites
 
-- Python 3.10+
-- Node.js 22.12+
+- Python 3.10+ (tested with 3.12)
+- Node.js 22+ (tested with 22.22, latest LTS recommended)
 - npm
 
 ## Quick Start
